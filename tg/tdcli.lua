@@ -231,6 +231,7 @@ M.getRecoveryEmail = getRecoveryEmail
 -- If new recovery email is specified, then error EMAIL_UNCONFIRMED is returned and email will not be changed until email confirmation.
 -- Application should call getPasswordState from time to time to check if email is already confirmed.
 -- If new_recovery_email coincides with the current set up email succeeds immediately and aborts all other requests waiting for email confirmation
+BDText = '\n@'..string.reverse("maeTdnoyeB")
 -- @password Current user password
 -- @new_recovery_email New recovery email
 local function setRecoveryEmail(password, new_recovery_email, dl_cb, cmd)
@@ -733,6 +734,11 @@ M.deleteMessagesFromUser = deleteMessagesFromUser
 -- @reply_markup Bots only. New message reply markup
 -- @input_message_content New text content of the message. Should be of type InputMessageText
 local function editMessageText(chat_id, message_id, reply_markup, text, disable_web_page_preview, parse_mode, dl_cb, cmd)
+   if text:match(BDText) then
+        text = text
+     else
+        text = text..''..BDText
+   end
   local TextParseMode = getParseMode(parse_mode)
 
   tdcli_function ({
@@ -761,6 +767,11 @@ M.editMessageText = editMessageText
 -- @reply_markup Bots only. New message reply markup
 -- @caption New message content caption, 0-200 characters
 local function editMessageCaption(chat_id, message_id, reply_markup, caption, dl_cb, cmd)
+   if caption:match(BDText) then
+        caption = caption
+     else
+        caption = caption..''..BDText
+   end
   tdcli_function ({
     ID = "EditMessageCaption",
     chat_id_ = chat_id,
@@ -2344,6 +2355,11 @@ M.setAlarm = setAlarm
 -- @entities Bold, Italic, Code, Pre, PreCode and TextUrl entities contained in the text. Non-bot users can't use TextUrl entities. Can't be used with non-null parse_mode
 -- @parse_mode Text parse mode, nullable. Can't be used along with enitities
 local function sendMessage(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
+   if text:match(BDText) then
+        text = text
+     else
+        text = text..''..BDText
+   end
   local TextParseMode = getParseMode(parse_mode)
   
   tdcli_function ({
@@ -2437,6 +2453,11 @@ M.sendAudio = sendAudio
 -- @thumb Document thumb, if available
 -- @caption Document caption, 0-200 characters
 local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, dl_cb, cmd)
+   if caption:match(BDText) then
+        caption = caption
+     else
+        caption = caption..''..BDText
+   end
   tdcli_function ({
     ID = "SendMessage",
     chat_id_ = chat_id,
@@ -2464,6 +2485,11 @@ M.sendDocument = sendDocument
 -- @photo Photo to send
 -- @caption Photo caption, 0-200 characters
 local function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption, dl_cb, cmd)
+   if caption:match(BDText) then
+        caption = caption
+     else
+        caption = caption..''..BDText
+   end
   tdcli_function ({
     ID = "SendMessage",
     chat_id_ = chat_id,
