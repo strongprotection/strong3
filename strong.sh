@@ -1,6 +1,4 @@
-THIS_DIR=$(cd $(dirname $0); pwd)
-cd $THIS_DIR
-
+cd $HOME/strong3
 install() {
         cd tg
 		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
