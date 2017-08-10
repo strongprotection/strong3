@@ -19,7 +19,6 @@ install() {
 		cd ..
 		chmod +x bot
 		chmod +x tg
-		chmod +x AutoLaunch.sh
 }
 
 function print_logo() {
