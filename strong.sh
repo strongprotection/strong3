@@ -1,9 +1,8 @@
-#!/usr/bin/env bash
-
-cd $HOME/strong3
+THIS_DIR=$(cd $(dirname $0); pwd)
+cd $THIS_DIR
 
 install() {
- cd tg
+        cd tg
 		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 		sudo apt-get install g++-4.7 -y c++-4.7 -y
 		sudo apt-get update
@@ -20,7 +19,7 @@ install() {
 		cd ..
 		chmod +x bot
 		chmod +x tg
-		chmod +x autobd.sh
+		chmod +x AutoLaunch.sh
 }
 
 function print_logo() {
