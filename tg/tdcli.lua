@@ -733,7 +733,7 @@ M.deleteMessagesFromUser = deleteMessagesFromUser
 -- @reply_markup Bots only. New message reply markup
 -- @input_message_content New text content of the message. Should be of type InputMessageText
 local function editMessageText(chat_id, message_id, reply_markup, text, disable_web_page_preview, parse_mode, dl_cb, cmd)
-local TextParseMode = getParseMode(parse_mode)
+  local TextParseMode = getParseMode(parse_mode)
 
   tdcli_function ({
     ID = "EditMessageText",
@@ -761,7 +761,7 @@ M.editMessageText = editMessageText
 -- @reply_markup Bots only. New message reply markup
 -- @caption New message content caption, 0-200 characters
 local function editMessageCaption(chat_id, message_id, reply_markup, caption, dl_cb, cmd)
-    tdcli_function ({
+  tdcli_function ({
     ID = "EditMessageCaption",
     chat_id_ = chat_id,
     message_id_ = message_id,
@@ -2437,7 +2437,7 @@ M.sendAudio = sendAudio
 -- @thumb Document thumb, if available
 -- @caption Document caption, 0-200 characters
 local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, dl_cb, cmd)
- tdcli_function ({
+  tdcli_function ({
     ID = "SendMessage",
     chat_id_ = chat_id,
     reply_to_message_id_ = reply_to_message_id,
@@ -2464,7 +2464,7 @@ M.sendDocument = sendDocument
 -- @photo Photo to send
 -- @caption Photo caption, 0-200 characters
 local function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption, dl_cb, cmd)
-    tdcli_function ({
+  tdcli_function ({
     ID = "SendMessage",
     chat_id_ = chat_id,
     reply_to_message_id_ = reply_to_message_id,
