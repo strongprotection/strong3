@@ -1,6 +1,6 @@
 cd $HOME/strong3
 install() {
-        cd tg
+        cd libs
 		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 		sudo apt-get install g++-4.7 -y c++-4.7 -y
 		sudo apt-get update
@@ -16,7 +16,6 @@ install() {
 		chmod +x tgcli
 		cd ..
 		chmod +x bot
-		chmod +x tg
 }
 
 function print_logo() {
@@ -76,7 +75,7 @@ if [ "$1" = "install" ]; then
 	logo_play
 	install
   else
-if [ ! -f ./tg/tgcli ]; then
+if [ ! -f ./libs/tgcli ]; then
     echo "tg not found"
     echo "Run $0 install"
     exit 1
@@ -85,6 +84,6 @@ if [ ! -f ./tg/tgcli ]; then
 	STRONGPROTECTION
 	logo_play
    #sudo service redis-server restart
-   ./tg/tgcli -s ./bot/bot.lua -l 1 -E $@
+   ./libs/tgcli -s ./bot/bot.lua -l 1 -E $@
    #./tg/tgcli -s ./bot/bot.lua $@
 fi
