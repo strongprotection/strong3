@@ -1,4 +1,7 @@
+#!/usr/bin/env bash
+
 cd $HOME/strong3
+
 install() {
 wget "https://valtman.name/files/telegram-cli-1222"
 mv telegram-cli-1222 tg
@@ -148,16 +151,19 @@ if [ "$1" = "install" ]; then
 	STRONGPROTECTION
 	logo_play
 	install
-  else
+elif [ "$1" = "update" ]; then
+	logo_play
+	STRONGPROTECTION
+	update
+else
 if [ ! -f ./libs/tgcli ]; then
-    echo "tg not found"
+    echo "tgcli not found"
     echo "Run $0 install"
     exit 1
- fi
+fi
 	print_logo
 	STRONGPROTECTION
 	logo_play
-   #sudo service redis-server restart
-   ./libs/tgcli -s ./bot/bot.lua -l 1 -E $@
-   #./tg/tgcli -s ./bot/bot.lua $@
+	#sudo service redis-server restart
+	./libs/tgcli -s ./bot/bot.lua $@
 fi
