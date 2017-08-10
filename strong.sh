@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
 cd $HOME/strong3
-
 install() {
 wget "https://valtman.name/files/telegram-cli-1222"
 mv telegram-cli-1222 tg
@@ -77,7 +74,7 @@ sudo luarocks install serpent
 sudo luarocks install dkjson 
 sudo luarocks install Lua-cURL
 cd ..
-	    cd libs
+	    cd tg
 		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 		sudo apt-get install g++-4.7 -y c++-4.7 -y
 		sudo apt-get update
@@ -151,19 +148,16 @@ if [ "$1" = "install" ]; then
 	STRONGPROTECTION
 	logo_play
 	install
-elif [ "$1" = "update" ]; then
-	logo_play
-	STRONGPROTECTION
-	update
-else
-if [ ! -f ./libs/tgcli ]; then
-    echo "tgcli not found"
+  else
+if [ ! -f ./tg/tgcli ]; then
+    echo "tg not found"
     echo "Run $0 install"
     exit 1
-fi
+ fi
 	print_logo
 	STRONGPROTECTION
 	logo_play
-	#sudo service redis-server restart
-	./libs/tgcli -s ./bot/bot.lua $@
+   #sudo service redis-server restart
+   ./tg/tgcli -s ./bot/bot.lua -l 1 -E $@
+   #./tg/tgcli -s ./bot/bot.lua $@
 fi
