@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
 cd $HOME/strong3
-
 install() {
 	    cd tg
 		sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
@@ -20,14 +17,6 @@ install() {
 		cd ..
 		chmod +x bot
 		chmod +x tg
-}
-
-function print_logo() {
-	green " ___  ____  ____   ____          ____ "
-    green "|___   ||  |____| |    | | \  | |  __ "           
-    green " ___|  ||  |  \   |____| |  \ | |_ __|"
-    green   "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	echo -e "\n\e[0m"
 }
 
 function logo_play() {
@@ -49,33 +38,11 @@ function logo_play() {
 	echo -e "\e[0m"
 }
 
-function STRONGPROTECTION() {
-	echo -e "\e[0m"
-	green "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	green "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	white "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	white "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	red   "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	red   "STRONGPROTECTION ROBOT BY BEHNAM MARZJI"
-	echo -e "\e[0m"
-}
-
-red() {
-  printf '\e[1;31m%s\n\e[0;39;49m' "$@"
-}
-green() {
-  printf '\e[1;32m%s\n\e[0;39;49m' "$@"
-}
-white() {
-  printf '\e[1;37m%s\n\e[0;39;49m' "$@"
-}
 update() {
 	git pull
 }
 
 if [ "$1" = "install" ]; then
-	print_logo
-	STRONGPROTECTION
 	logo_play
 	install
   else
@@ -84,10 +51,6 @@ if [ ! -f ./tg/tgcli ]; then
     echo "Run $0 install"
     exit 1
  fi
-	print_logo
-	STRONGPROTECTION
 	logo_play
-   #sudo service redis-server restart
    ./tg/tgcli -s ./bot/bot.lua -l 1 -E $@
-   #./tg/tgcli -s ./bot/bot.lua $@
 fi
